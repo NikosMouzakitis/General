@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
+#include <poll.h>
+#include <signal.h>
 
 int main(int argc,char *argv[])
 {
@@ -12,8 +12,7 @@ int main(int argc,char *argv[])
 	int timeout = 3000;	//3 seconds.
 	char buffer[32];
 	int ret;
-	
-	
+		
 	fds[0].fd = fd;
 	fds[0].events = 0;
   	fds[0].events |= POLLIN;
@@ -23,3 +22,8 @@ int main(int argc,char *argv[])
 		printf("timeout\n");
 	} else {
 		read(fd,buffer,32);
+		printf("%s\n",buffer);
+		
+	}
+	return(0);
+}
